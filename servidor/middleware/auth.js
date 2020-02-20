@@ -1,0 +1,23 @@
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+
+const auth = (req, res, next) => {
+  // Leer el token del header
+  const token = req.header("x-auth-token");
+
+  //si no hay token
+  if (!token) {
+    return res.status(401).json({ msg: "no hay Token, permiso no válido" });
+  }
+
+  // Validar el Token
+  try {
+    const cifrado = jwt.verify(token, process.env.SECRETO);
+    req.usuario = cifrado.usuario;
+    next();
+  } catch (error) {
+    res.status(401).json({ msg: "Token no válido" });
+  }
+};
+
+module.exports = auth;

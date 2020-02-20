@@ -1,0 +1,15 @@
+version: "2"
+services:
+  server:
+    build: .
+    environment:
+      - MONGO_URL= "${DB_MONGO}"
+      - SECRECT_KEY= "${SECRETO}"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27018:27017"
