@@ -13,4 +13,6 @@ La aplicación puede ser dockerizada tanto del lado de la api (Servidor), como d
 
 Probando en el nuevo Linux Mint
 
+Probando desde el Mac
+
 Antonio Rodríguez
